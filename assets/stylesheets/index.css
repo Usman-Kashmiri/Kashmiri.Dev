@@ -65,10 +65,6 @@ html {
     justify-content: space-between;
 }
 
-a:visited {
-    color: #fff;
-}
-
 section .title{
     position: relative;
     text-align: center;
@@ -156,7 +152,7 @@ section .title::after{
 }
 
 .nav-bar-container.sticky .menu li a:hover {
-    color: #2f387a;
+    color: #7bb4eb;
 }
 
 
@@ -442,6 +438,14 @@ section .title::after{
     transition: all 0.3s ease;
 }
 
+.work a {
+    color: #fff;
+}
+
+.work a:visited {
+    color: #fff;
+}
+
 .work .carousel .card:hover{
     background: #2f387a;
 }
@@ -455,7 +459,7 @@ section .title::after{
 }
 
 .work .carousel .card:hover .box{
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 .work .carousel .card .text{
@@ -526,41 +530,46 @@ section .title::after{
     margin: 10px 0;
 }
 
-.contact .contact-content .row{
+.contact .contact-content .row {
     display: flex;
     height: 65px;
     align-items: center;
 }
 
-.contact .contact-content .row .info{
+.contact .contact-content .row .info {
     margin-left: 30px;
 }
 
-.contact .contact-content .row i{
+.contact .contact-content .row i {
     font-size: 25px;
     color: #2f387a;
 }
 
-.contact .contact-content .info .head{
+.contact .head {
     font-weight: 500;
 }
 
-.contact .contact-content .info .sub-title{
+.contact .sub-title {
     color: #333;
 }
 
-.contact .right form .fields{
+.contact .sub-title a {
+    color: #333;
+    text-decoration: underline;
+}
+
+.contact .right form .fields {
     display: flex;
 }
 
 .contact .right form .field,
-.contact .right form .fields .field{
+.contact .right form .fields .field {
     height: 45px;
     width: 100%;
     margin-bottom: 15px;
 }
 
-.contact .right form .textarea{
+.contact .right form .textarea {
     height: 80px;
     width: 100%;
 }
@@ -605,8 +614,8 @@ section .title::after{
     width: 100%;
     height: 100%;
     border: 2px solid #2f387a;
-    background: #2f387a;
-    color: #fff;
+    background: transparent;
+    color: #2f387a;
     outline: none;
     font-size: 20px;
     font-weight: 500;
@@ -616,8 +625,8 @@ section .title::after{
 }
 
 .contact .right form .button button:hover{
-    color: #2f387a;
-    background: none;
+    color: #fff;
+    background: #2f387a;
 }
 
 /* footer section styling */
@@ -629,12 +638,12 @@ footer{
     text-align: center;
 }
 
-footer span a{
+footer span a {
     color: #7bb4eb;
     text-decoration: none;
 }
 
-footer span a:hover{
+footer span a:hover {
     text-decoration: underline;
 }
 
