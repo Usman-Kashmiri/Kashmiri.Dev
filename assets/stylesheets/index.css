@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
 * {
     margin: 0;
     padding: 0;
@@ -16,9 +17,17 @@
 :root {
     --LBlue: #7bb4eb;
     --DBlue: #2f387a;
-    --Dark: #313131;
+    --Dark: #212121;
     --White: #fff;
     --Black: #111;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+    color: var(--text-color);
 }
 
 html {
@@ -29,6 +38,22 @@ body {
     overflow-x: hidden;
     background-color: var(--White);
     transition: 0.3s linear;
+}
+
+body.dark-theme {
+    --text-color: var(--Black);
+    --text-color2: var(--White);
+}
+
+@media (prefers-color-scheme: dark) {
+    body.light-theme {
+        --text-color: var(--White);
+        --text-color2: var(--Black);
+    }
+}
+
+body.dark {
+    background: var(--Black);
 }
 
 
@@ -50,6 +75,176 @@ body {
     background: var(--LBlue);
 }
 
+.dark::-webkit-scrollbar-track {
+    background: var(--Black);
+}
+
+.dark::-webkit-scrollbar-thumb {
+    background: var(--Dark);
+}
+
+
+/* Preloader */
+
+#preloader {
+    display: flex;
+    min-height: 100vh;
+    background: var(--LBlue);
+    align-items: center;
+    justify-content: center;
+}
+
+#preloader h2 {
+    font-family: 'Poppins', sans-serif;
+    color: var(--LBlue);
+    font-size: 100px;
+    font-weight: 900;
+    letter-spacing: 10px;
+    position: relative;
+    text-transform: uppercase;
+    -webkit-text-stroke: 2px var(--White);
+}
+
+#preloader h2::before {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--DBlue);
+    overflow: hidden;
+    position: absolute;
+    content: attr(data-text);
+    animation: animate 3s linear;
+}
+
+@keyframes animate {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+#page {
+    display: none;
+}
+
+
+/* Alert message */
+
+.alert {
+    display: block;
+    padding: 8px 20px;
+    width: 250px;
+    background-color: var(--Dark);
+    position: absolute;
+    margin-top: 40px;
+    right: -8px;
+    z-index: 120;
+    border-radius: 80px;
+}
+
+.alert::before {
+    content: "\f0d8";
+    font-family: fontAwesome;
+    font-size: 50px;
+    color: var(--Dark);
+    position: absolute;
+    right: 20px;
+    top: -34px;
+}
+
+.alert p {
+    font-family: 'Raleway';
+    color: white;
+    font-size: 16px;
+    margin-top: 4px;
+}
+
+.closebtn {
+    margin: 5px;
+    right: 8px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 30px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+
+/* Dark Theme */
+
+.dark-mode {
+    position: relative;
+    top: 20px;
+    z-index: 99;
+}
+
+#bg-btn {
+    position: absolute;
+    cursor: pointer;
+    right: 1.5%;
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+}
+
+.label {
+    background-color: #fff;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    height: 20px;
+    width: 54px;
+    transform: scale(1.4);
+}
+
+.label .ball {
+    background-color: #111;
+    border-radius: 50%;
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    height: 25px;
+    width: 25px;
+    transform: translateX(0px);
+    transition: transform 0.3s ease-in-out;
+}
+
+.checkbox:checked+.label .ball {
+    transform: translateX(32px);
+}
+
+.checkbox:checked+.label {
+    background-color: #111;
+}
+
+.checkbox:checked+.label .ball {
+    background-color: #fff;
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.fa-sun {
+    color: #f39c12;
+}
+
 
 /* all similar content styling codes */
 
@@ -58,13 +253,13 @@ body {
 #skills,
 #work,
 #contact {
-    padding: 10% 0;
+    padding: 5% 0;
     overflow: hidden;
 }
 
 .container {
     max-width: 1300px;
-    padding: 0 80px;
+    padding: 50px 80px;
     margin: auto;
 }
 
@@ -104,7 +299,7 @@ section .title::before {
     left: 50%;
     width: 180px;
     height: 3px;
-    background: var(--Black);
+    background: var(--text-color);
     transform: translateX(-50%);
 }
 
@@ -115,7 +310,8 @@ section .title::after {
     font-size: 20px;
     color: var(--DBlue);
     padding: 0 5px;
-    background: var(--White);
+    background: var(--text-color2);
+    transition: ease-in 0.3s;
     transform: translateX(-50%);
 }
 
@@ -149,7 +345,7 @@ section .title::after {
 .logo a {
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 50px;
-    color: var(--LBlue);
+    color: var(--White);
     cursor: pointer;
 }
 
@@ -188,15 +384,24 @@ section .title::after {
 
 /* home section styling */
 
-.home {
+section.home {
     display: flex;
-    background: url(../imgs/Banner.jpg) no-repeat center;
     background-size: cover;
     background-attachment: fixed;
     height: 100vh;
     min-height: 500px;
     color: var(--White);
     font-family: 'Ubuntu', sans-serif;
+}
+
+.light-bg {
+    transition: 0.6s ease-in;
+    background: url(../imgs/LightModeBanner.jpg) no-repeat center;
+}
+
+.dark-bg {
+    transition: 0.6s ease-in;
+    background: url(../imgs/DarkModeBanner.jpg) no-repeat center;
 }
 
 .home .container {
@@ -276,6 +481,7 @@ section .title::after {
 
 .about .about-content .col-left p {
     text-align: justify;
+    color: var(--text-color);
 }
 
 .about .about-content .col-left a {
@@ -297,13 +503,26 @@ section .title::after {
     color: var(--White);
 }
 
+#darkimg {
+    display: none;
+}
+
 
 /* services section styling */
 
 .services,
 .work {
+    background: var(--Dark);
+}
+
+.services h2,
+.work h2 {
     color: var(--White);
-    background: var(--Black);
+}
+
+.services h4,
+.services p {
+    color: var(--White);
 }
 
 .services .title::before,
@@ -313,7 +532,7 @@ section .title::after {
 
 .services .title::after,
 .work .title::after {
-    background: var(--Black);
+    background: var(--Dark);
     content: "what I provide";
 }
 
@@ -397,6 +616,7 @@ section .title::after {
 
 .skills .skills-content .right .bars {
     margin-bottom: 15px;
+    overflow: hidden;
 }
 
 .skills .skills-content .right .info {
@@ -409,6 +629,11 @@ section .title::after {
 .skills .skills-content .right span {
     font-weight: 500;
     font-size: 18px;
+    color: var(--text-color);
+}
+
+.right {
+    overflow: hidden;
 }
 
 .line {
@@ -449,6 +674,11 @@ section .title::after {
 
 
 /* work section styling */
+
+.work .container {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
 
 .work .title::after {
     content: "what I've made";
@@ -580,7 +810,7 @@ section .title::after {
 }
 
 .contact .sub-title a {
-    color: #333;
+    color: var(--text-color);
     text-decoration: underline;
 }
 
@@ -659,7 +889,7 @@ section .title::after {
 /* footer section styling */
 
 footer {
-    background: var(--Black);
+    background: var(--Dark);
     padding: 3% 0;
     color: var(--White);
     text-align: center;
@@ -687,14 +917,15 @@ footer span a:hover {
 }
 
 @media (max-width: 1080px) {
+    .nav-bar-container {
+        position: relative;
+        right: 50px;
+    }
     .home {
         background-position-x: 95%;
     }
     .text-2 {
         font-size: 60px;
-    }
-    .container {
-        padding: 0 50px;
     }
     #third-box {
         display: inline-block;
@@ -705,6 +936,9 @@ footer span a:hover {
 }
 
 @media (max-width: 770px) {
+    #preloader h2 {
+        font-size: 76px;
+    }
     .nav-bar-container {
         z-index: 8;
         position: absolute;
@@ -717,7 +951,7 @@ footer span a:hover {
         position: absolute;
         width: 50px;
         left: 80%;
-        top: 15px;
+        top: 20px;
         z-index: 12;
     }
     .nav-bar {
@@ -870,7 +1104,7 @@ footer span a:hover {
 
 @media (max-width: 690px) {
     .container {
-        padding: 0 23px;
+        padding: 25px 23px;
     }
     .text-2 {
         font-size: 60px;
@@ -890,11 +1124,22 @@ footer span a:hover {
 }
 
 @media (max-width: 540px) {
+    #preloader h2 {
+        font-size: 30px;
+        -webkit-text-stroke: 1px var(--White);
+    }
     .logo a {
-        font-size: 40px;
+        font-size: 36px;
+    }
+    .menu-btn {
+        top: 15px;
+        left: 60%;
     }
     .menu.active {
-        margin-top: 62px;
+        margin-top: 58px;
+    }
+    .dark-mode {
+        top: 15px;
     }
     .home {
         background-position-x: 92%;
