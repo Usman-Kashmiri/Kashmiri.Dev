@@ -1,12 +1,12 @@
+// preloader
+var myVar = setTimeout(showPage, 3000);
+
+function showPage() {
+    document.getElementById("preloader").style.display = "none";
+    document.getElementById("page").style.display = "block";
+}
+
 $(document).ready(function() {
-
-    // preloader
-    var myVar = setTimeout(showPage, 3000);
-
-    function showPage() {
-        document.getElementById("preloader").style.display = "none";
-        document.getElementById("page").style.display = "block";
-    }
 
     // Menu toggle btn
     $('.menu-btn').click(function() {
@@ -15,9 +15,20 @@ $(document).ready(function() {
         $('.menu-btn .menu').toggleClass('active');
     });
 
-    // $('#change-bg').click(function() {
-    //     $('section.home').addClass('dark-bg').removeClass('light-bg')
-    // });
+    // sticky navbar on scroll script
+    $(window).scroll(function() {
+        if (this.scrollY > 20) {
+            $('.nav-bar').addClass("sticky");
+        } else {
+            $('.nav-bar').removeClass("sticky");
+        }
+    });
+
+
+    $('.menu li a').click(function() {
+        // applying again smooth scroll on menu items click
+        $('html').css("scrollBehavior", "smooth");
+    });
 
     // Dark theme mode
     var checkBox = document.getElementById('chk');
@@ -64,48 +75,6 @@ $(document).ready(function() {
         }
     });
 
-    // const btn = document.getElementById("chk");
-    // const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-    // const currentTheme = localStorage.getItem("theme");
-    // if (currentTheme == "dark") {
-    //     document.body.classList.toggle("dark-theme");
-    // } else if (currentTheme == "light") {
-    //     document.body.classList.toggle("light-theme");
-    // }
-
-    // btn.addEventListener("click", function() {
-    //     if (prefersDarkScheme.matches) {
-    //         document.body.classList.toggle("light-theme");
-    //         var theme = document.body.classList.contains("light-theme") ?
-    //             "light" :
-    //             "dark";
-    //     } else {
-    //         document.body.classList.toggle("dark-theme");
-    //         var theme = document.body.classList.contains("dark-theme") ?
-    //             "dark" :
-    //             "light";
-    //     }
-    //     localStorage.setItem("theme", theme);
-    // });
-
-    // sticky navbar on scroll script
-    $(window).scroll(function() {
-        if (this.scrollY > 20) {
-            $('.nav-bar').addClass("sticky");
-        } else {
-            $('.nav-bar').removeClass("sticky");
-        }
-    });
-
-    // aos (animate on scroll)
-    AOS.init();
-
-    $('.menu li a').click(function() {
-        // applying again smooth scroll on menu items click
-        $('html').css("scrollBehavior", "smooth");
-    });
-
     // typing text animation script
     var typed = new Typed(".typing", {
         strings: ["Frontend Developer", "Designer"],
@@ -120,27 +89,6 @@ $(document).ready(function() {
         backSpeed: 40,
         loop: true
     });
-
-    // Messenger Chat Integration
-    var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "593965871093444");
-    chatbox.setAttribute("attribution", "biz_inbox");
-
-    window.fbAsyncInit = function() {
-        FB.init({
-            xfbml: true,
-            version: 'v11.0'
-        });
-    };
-
-    (function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
 
     // owl carousel script
     $('.carousel').owlCarousel({
@@ -171,13 +119,56 @@ $(document).ready(function() {
     // GSAP animation
     gsap.registerPlugin(ScrollTrigger)
 
-    const progressTimeline = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".bars",
-                pin: false,
-                start: "top bottom",
-                once: true
-            }
-        })
-        .from('.line', { opacity: 0, duration: 1, x: -100, stagger: 0.3 })
+    // For About Section
+    gsap.from('col-right', {
+        scrollTrigger: {
+            trigger: ".about-content",
+            start: "top center"
+        },
+        opacity: 0,
+        duration: 1,
+        x: 100
+    })
+    gsap.from('col-left', {
+        scrollTrigger: {
+            trigger: ".about-content",
+            start: "top center"
+        },
+        opacity: 0,
+        duration: 1,
+        x: -100
+    })
+
+    // For Skills progress bars
+    gsap.from('.line', {
+        scrollTrigger: {
+            trigger: ".bars",
+            start: "top center"
+        },
+        opacity: 0,
+        duration: 1,
+        x: -100,
+        stagger: 0.3
+    })
+
+    // Messenger Chat Integration
+    var chatbox = document.getElementById('fb-customer-chat');
+    chatbox.setAttribute("page_id", "593965871093444");
+    chatbox.setAttribute("attribution", "biz_inbox");
+
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml: true,
+            version: 'v11.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 });

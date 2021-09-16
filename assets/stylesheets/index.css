@@ -543,7 +543,7 @@ section.home {
 
 .services .serv-content .card {
     width: calc(33% - 20px);
-    background: #222;
+    background: #111;
     text-align: center;
     border-radius: 6px;
     padding: 20px 25px;
@@ -704,10 +704,6 @@ section.home {
 
 .work a:visited {
     color: var(--White);
-}
-
-.work .carousel .card:hover {
-    background: var(--DBlue);
 }
 
 .work .carousel .card .box {
@@ -1141,7 +1137,7 @@ footer span a:hover {
         left: 60%;
     }
     .menu.active {
-        margin-top: 58px;
+        margin-top: 56px;
     }
     .dark-mode {
         top: 15px;
