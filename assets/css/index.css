@@ -223,8 +223,17 @@ footer {
 .contact .contact-content {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
     justify-content: space-between;
+}
+
+.skills .skills-content,
+.contact .contact-content {
+    align-items: flex-start;
+}
+
+.about .about-content,
+.services .serv-content {
+    align-items: center;
 }
 
 section .title {
@@ -346,12 +355,12 @@ section.home {
 
 .light-bg {
     transition: 0.6s ease-in;
-    background: url(../imgs/LightModeBanner.jpg) no-repeat center;
+    background: url(../images/LightModeBanner.jpg) no-repeat center;
 }
 
 .dark-bg {
     transition: 0.6s ease-in;
-    background: url(../imgs/DarkModeBanner.jpg) no-repeat center;
+    background: url(../images/DarkModeBanner.jpg) no-repeat center;
 }
 
 .home .container {
@@ -405,6 +414,8 @@ section.home {
 }
 
 .about .about-content .col-right {
+    display: flex;
+    justify-content: center;
     width: 40%;
 }
 
@@ -495,7 +506,10 @@ section.home {
 }
 
 .services .serv-content .card {
+    display: flex;
+    align-items: center;
     width: calc(33% - 20px);
+    min-height: 250px;
     background: #111;
     text-align: center;
     border-radius: 6px;
@@ -539,6 +553,10 @@ section.home {
     content: 'what I know';
 }
 
+.skills .skills-content {
+    align-items: flex-start;
+}
+
 .skills .skills-content .column {
     width: calc(50% - 30px);
 }
@@ -549,27 +567,42 @@ section.home {
     margin-bottom: 10px;
 }
 
-.skills .skills-content .left p {
+.skills .skills-content .left li {
     text-align: justify;
+    font-size: 1.25rem;
 }
 
+.skills .skills-content .left .sub-list {
+    margin: 10px 0 0 40px;
+}
+
+.skills .skills-content .left .sub-list li {
+    font-size: 1.05rem;
+}
+
+.skills .skills-content .left .sub-list li::marker {
+    content: '\2013';
+    font-size: 22px;
+}
+
+.skills .skills-content .left ul li::marker {
+    content: '\2714\0020';
+    font-size: 32px;
+    color: var(--DBlue);
+  }
+
 .skills .skills-content .left a {
-    display: inline-block;
-    background: none;
     color: var(--LBlue);
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 16px;
-    margin-top: 20px;
-    border-radius: 6px;
-    border: 2px solid var(--LBlue);
+    font-weight: 900;
     transition: all 0.3s ease;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
 }
 
 .skills .skills-content .left a:hover {
-    border: 2px solid;
-    color: var(--White);
-    background: var(--LBlue);
+    color: var(--DBlue);
 }
 
 .skills .skills-content .right .bars {
@@ -614,20 +647,15 @@ section.home {
     width: 95%;
 }
 
-.skills-content .right .css::before {
+.skills-content .right .css::before,
+.skills-content .right .js::before {
     width: 90%;
 }
 
-.skills-content .right .js::before {
-    width: 85%;
-}
 
-.skills-content .right .office::before {
-    width: 80%;
-}
-
-.skills-content .right .editing::before {
-    width: 75%;
+.skills-content .right .reactjs::before,
+.skills-content .right .php::before {
+    width: 70%;
 }
 
 
@@ -645,7 +673,7 @@ section.home {
 .work .carousel .card {
     background: #222;
     border-radius: 6px;
-    padding: 25px 35px;
+    padding: 10px;
     text-align: center;
     overflow: hidden;
     transition: all 0.3s ease;
@@ -672,14 +700,15 @@ section.home {
 }
 
 .work .carousel .card .text {
+    text-transform: capitalize;
     font-size: 25px;
     font-weight: 500;
     margin: 10px 0 7px 0;
 }
 
 .work .carousel .card img {
-    height: 225px;
-    width: 115%;
+    height: unset;
+    width: 100%;
     object-fit: cover;
     border-radius: 22px;
     border: 3px solid var(--DBlue);
@@ -729,7 +758,7 @@ section.home {
 .contact .contact-content .text {
     font-size: 20px;
     font-weight: 600;
-    margin-bottom: 10px;
+    margin: 10px 0;
 }
 
 .contact .contact-content .left p {
@@ -896,9 +925,9 @@ footer span a:hover {
     #third-box {
         display: inline-block;
     }
-    .work .carousel .card img {
-        width: 118%;
-    }
+    .work .carousel .card .text {
+        font-size: 18px;
+     }
 }
 
 @media (max-width: 770px) {
@@ -1131,6 +1160,9 @@ footer span a:hover {
     .skills .text {
         font-size: 19px;
     }
+    .work .carousel .card .text {
+        font-size: 15px;
+     }
     .contact .right form .fields {
         flex-direction: column;
     }

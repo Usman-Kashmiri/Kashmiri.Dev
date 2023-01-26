@@ -1,14 +1,14 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // Menu toggle btn
-    $('.menu-btn').click(function() {
+    $('.menu-btn').click(function () {
         $('ul.toggle').toggleClass('active');
         $('.menu').toggleClass("active");
         $('.menu-btn .menu').toggleClass('active');
     });
 
     // sticky navbar on scroll script
-    $(window).scroll(function() {
+    $(window).scroll(function () {
         if (this.scrollY > 20) {
             $('.nav-bar').addClass("sticky");
         } else {
@@ -17,7 +17,7 @@ $(document).ready(function() {
     });
 
 
-    $('.menu li a').click(function() {
+    $('.menu li a').click(function () {
         $('html').css("scrollBehavior", "smooth");
     });
 
@@ -42,7 +42,7 @@ $(document).ready(function() {
         $(".alert").hide().delay(5000).fadeIn();
     }
 
-    $('#chk').click(function() {
+    $('#chk').click(function () {
         if (checkBox.checked) {
             $('section.home').addClass('dark-bg').removeClass('light-bg');
             $('img#lightimg').hide();
@@ -54,7 +54,7 @@ $(document).ready(function() {
         }
     });
 
-    checkBox.addEventListener('change', function() {
+    checkBox.addEventListener('change', function () {
         if (this.checked) {
             document.documentElement.setAttribute('data-theme', 'darkMode');
             $('body').addClass('dark');
@@ -68,14 +68,14 @@ $(document).ready(function() {
 
     // typing text animation script
     var typed = new Typed(".typing", {
-        strings: ["Frontend Developer", "Designer"],
+        strings: ["JS Developer", "Php Developer"],
         typeSpeed: 100,
         backSpeed: 40,
         loop: true
     });
 
     var typed = new Typed(".typing-2", {
-        strings: ["Frontend Developer", "Designer"],
+        strings: ["JS Developer", "Php Developer"],
         typeSpeed: 100,
         backSpeed: 40,
         loop: true
@@ -83,7 +83,7 @@ $(document).ready(function() {
 
     // owl carousel script
     $('.carousel').owlCarousel({
-        margin: 30,
+        margin: 20,
         loop: true,
         autoplay: true,
         autoplayTimeOut: 2000,
@@ -94,6 +94,7 @@ $(document).ready(function() {
                 nav: false
             },
             600: {
+                margin: 40,
                 items: 2,
                 nav: false
             },
@@ -102,7 +103,7 @@ $(document).ready(function() {
                 nav: false
             },
             1500: {
-                margin: 60,
+                margin: 20
             }
         }
     });
@@ -133,23 +134,25 @@ $(document).ready(function() {
         stagger: 0.2
     });
 
+
+
     // Messenger Chat Integration
     var chatbox = document.getElementById('fb-customer-chat');
-    chatbox.setAttribute("page_id", "593965871093444");
+    chatbox.setAttribute("page_id", "109278592070427");
     chatbox.setAttribute("attribution", "biz_inbox");
 
-    window.fbAsyncInit = function() {
+    // Your SDK code
+    window.fbAsyncInit = function () {
         FB.init({
             xfbml: true,
-            version: 'v11.0'
+            version: 'v15.0'
         });
     };
 
-    (function(d, s, id) {
+    (function (d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
+        js = d.createElement(s); js.id = id;
         js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
