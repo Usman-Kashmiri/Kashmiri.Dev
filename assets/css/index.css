@@ -904,38 +904,6 @@ footer span a:hover {
     .logo a {
         font-size: 34px;
     }
-    .nav-bar,
-    .menu.active {
-        background-color: var(--DBlue);
-    }
-    .nav-bar-container {
-        position: relative;
-        right: 30px;
-        margin: 0 10px;
-    }
-    .menu li a {
-        font-size: 30px;
-        margin-right: 12px;
-        margin-left: 0;
-    }
-    .dark-mode {
-        top: 16px;
-    }
-    .home {
-        background-position-x: 95%;
-    }
-    .text-2 {
-        font-size: 60px;
-    }
-    #third-box {
-        display: inline-block;
-    }
-    .work .carousel .card .text {
-        font-size: 18px;
-     }
-}
-
-@media (max-width: 770px) {
     .logo a {
         font-size: 44px;
     }
@@ -1070,6 +1038,33 @@ footer span a:hover {
         margin: 5px 0;
         font-size: 28px;
     }
+    .nav-bar,
+    .menu.active {
+        background-color: var(--DBlue);
+    }
+    .menu li a {
+        font-size: 30px;
+        margin-right: 12px;
+        margin-left: 0;
+    }
+    .dark-mode {
+        top: 16px;
+    }
+    .home {
+        background-position-x: 95%;
+    }
+    .text-2 {
+        font-size: 60px;
+    }
+    #third-box {
+        display: inline-block;
+    }
+    .work .carousel .card .text {
+        font-size: 18px;
+     }
+}
+
+@media (max-width: 770px) {
     .text-2 {
         font-size: 65px;
     }
