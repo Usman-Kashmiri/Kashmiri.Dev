@@ -904,6 +904,10 @@ footer span a:hover {
     .logo a {
         font-size: 34px;
     }
+    .nav-bar,
+    .menu.active {
+        background-color: var(--DBlue);
+    }
     .nav-bar-container {
         position: relative;
         right: 30px;
@@ -965,7 +969,6 @@ footer span a:hover {
     }
     .nav-bar {
         position: fixed;
-        background: transparent;
     }
     .menu-btn.active {
         display: block;
